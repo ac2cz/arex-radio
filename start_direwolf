@@ -1,0 +1,3 @@
+#!/bin/bash
+
+direwolf -qd -r48000 -B1200
