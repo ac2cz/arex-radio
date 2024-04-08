@@ -162,7 +162,7 @@ class arex_radio_trx_pluto(gr.top_block, Qt.QWidget):
         self.qtgui_freq_sink_x_0 = qtgui.freq_sink_c(
             1024, #size
             window.WIN_BLACKMAN, #wintype
-            Rx_LO, #fc
+            (Rx_LO + 9750000000), #fc
             528000, #bw
             "RX SDR", #name
             1,
@@ -350,8 +350,8 @@ class arex_radio_trx_pluto(gr.top_block, Qt.QWidget):
         self.connect((self.blocks_multiply_xx_0, 0), (self.blocks_multiply_const_vxx_4, 0))
         self.connect((self.blocks_mute_xx_0_0_0, 0), (self.rational_resampler_xxx_0, 0))
         self.connect((self.freq_xlating_fir_filter_xxx_0, 0), (self.analog_pll_carriertracking_cc_0, 0))
-        self.connect((self.freq_xlating_fir_filter_xxx_0, 0), (self.qtgui_freq_sink_x_0, 0))
         self.connect((self.iio_pluto_source_0, 0), (self.freq_xlating_fir_filter_xxx_0, 0))
+        self.connect((self.iio_pluto_source_0, 0), (self.qtgui_freq_sink_x_0, 0))
         self.connect((self.low_pass_filter_0, 0), (self.audio_sink_0, 0))
         self.connect((self.rational_resampler_xxx_0, 0), (self.iio_pluto_sink_0, 0))
 
@@ -454,7 +454,7 @@ class arex_radio_trx_pluto(gr.top_block, Qt.QWidget):
     def set_Rx_LO(self, Rx_LO):
         self.Rx_LO = Rx_LO
         self.iio_pluto_source_0.set_frequency(self.Rx_LO)
-        self.qtgui_freq_sink_x_0.set_frequency_range(self.Rx_LO, 528000)
+        self.qtgui_freq_sink_x_0.set_frequency_range((self.Rx_LO + 9750000000), 528000)
 
     def get_Rx_Gain(self):
         return self.Rx_Gain

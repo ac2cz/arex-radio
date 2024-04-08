@@ -1192,7 +1192,7 @@ blocks:
     color9: '"dark green"'
     comment: ''
     ctrlpanel: 'True'
-    fc: Rx_LO
+    fc: Rx_LO + 9750000000
     fftsize: '1024'
     freqhalf: 'True'
     grid: 'True'
@@ -1469,8 +1469,8 @@ connections:
 - [blocks_multiply_xx_0, '0', blocks_multiply_const_vxx_4, '0']
 - [blocks_mute_xx_0_0_0, '0', rational_resampler_xxx_0, '0']
 - [freq_xlating_fir_filter_xxx_0, '0', analog_pll_carriertracking_cc_0, '0']
-- [freq_xlating_fir_filter_xxx_0, '0', qtgui_freq_sink_x_0, '0']
 - [iio_pluto_source_0, '0', freq_xlating_fir_filter_xxx_0, '0']
+- [iio_pluto_source_0, '0', qtgui_freq_sink_x_0, '0']
 - [low_pass_filter_0, '0', audio_sink_0, '0']
 - [low_pass_filter_0, '0', blocks_multiply_const_vxx_1_0, '0']
 - [rational_resampler_xxx_0, '0', iio_pluto_sink_0, '0']
