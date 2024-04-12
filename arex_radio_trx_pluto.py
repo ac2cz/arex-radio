@@ -236,7 +236,6 @@ class arex_radio_trx_pluto(gr.top_block, Qt.QWidget):
         self.blocks_multiply_const_vxx_2_1 = blocks.multiply_const_ff(Rx_Mode==5)
         self.blocks_multiply_const_vxx_2_0 = blocks.multiply_const_ff(((Rx_Mode==4) * 0.2))
         self.blocks_multiply_const_vxx_2 = blocks.multiply_const_ff(Rx_Mode<4)
-        self.blocks_multiply_const_vxx_1_0 = blocks.multiply_const_ff(Rx_Monitor)
         self.blocks_multiply_const_vxx_1 = blocks.multiply_const_ff(((AFGain/100.0) *  (not Rx_Mute)))
         self.blocks_multiply_const_vxx_0_0 = blocks.multiply_const_ff((FMMIC/5.0))
         self.blocks_multiply_const_vxx_0 = blocks.multiply_const_ff(((MicGain)*(int(Tx_Mode==0)) + (MicGain)*(int(Tx_Mode==1)) + (AMMIC/10.0)*(int(Tx_Mode==5)) ))
@@ -282,7 +281,6 @@ class arex_radio_trx_pluto(gr.top_block, Qt.QWidget):
                 window.WIN_HAMMING,
                 6.76))
         self.audio_source_0 = audio.source(48000, "plughw:2,0,1", True)
-        self.audio_sink_0_0 = audio.sink(48000, "plughw:3,0", False)
         self.audio_sink_0 = audio.sink(48000, "plughw:2,0,0", False)
         self.analog_sig_source_x_1_0 = analog.sig_source_f(48000, analog.GR_SIN_WAVE, (CTCSS/10.0), (0.15 * (CTCSS >0)), 0, 0)
         self.analog_sig_source_x_1 = analog.sig_source_f(48000, analog.GR_COS_WAVE, 1750, (1.0*ToneBurst), 0, 0)
@@ -343,7 +341,6 @@ class arex_radio_trx_pluto(gr.top_block, Qt.QWidget):
         self.connect((self.blocks_multiply_const_vxx_0, 0), (self.blocks_add_const_vxx_0_0, 0))
         self.connect((self.blocks_multiply_const_vxx_0_0, 0), (self.blocks_add_xx_0, 1))
         self.connect((self.blocks_multiply_const_vxx_1, 0), (self.low_pass_filter_0, 0))
-        self.connect((self.blocks_multiply_const_vxx_1_0, 0), (self.audio_sink_0_0, 0))
         self.connect((self.blocks_multiply_const_vxx_2, 0), (self.blocks_add_xx_1_0, 0))
         self.connect((self.blocks_multiply_const_vxx_2_0, 0), (self.blocks_add_xx_1, 1))
         self.connect((self.blocks_multiply_const_vxx_2_1, 0), (self.blocks_add_xx_1_0, 1))
@@ -356,7 +353,6 @@ class arex_radio_trx_pluto(gr.top_block, Qt.QWidget):
         self.connect((self.iio_pluto_source_0, 0), (self.freq_xlating_fir_filter_xxx_0, 0))
         self.connect((self.iio_pluto_source_0, 0), (self.qtgui_freq_sink_x_0, 0))
         self.connect((self.low_pass_filter_0, 0), (self.audio_sink_0, 0))
-        self.connect((self.low_pass_filter_0, 0), (self.blocks_multiply_const_vxx_1_0, 0))
         self.connect((self.rational_resampler_xxx_0, 0), (self.iio_pluto_sink_0, 0))
 
 
@@ -441,7 +437,6 @@ class arex_radio_trx_pluto(gr.top_block, Qt.QWidget):
 
     def set_Rx_Monitor(self, Rx_Monitor):
         self.Rx_Monitor = Rx_Monitor
-        self.blocks_multiply_const_vxx_1_0.set_k(self.Rx_Monitor)
 
     def get_Rx_Mode(self):
         return self.Rx_Mode

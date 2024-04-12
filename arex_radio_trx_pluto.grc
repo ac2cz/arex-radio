@@ -562,7 +562,7 @@ blocks:
     bus_structure: null
     coordinate: [1752, 460.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: audio_source_0
   id: audio_source
   parameters:
@@ -916,7 +916,7 @@ blocks:
     bus_structure: null
     coordinate: [1688, 388.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: blocks_multiply_const_vxx_2
   id: blocks_multiply_const_vxx
   parameters:
