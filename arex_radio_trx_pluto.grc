@@ -205,7 +205,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: 'False'
+    value: 'True'
   states:
     bus_sink: false
     bus_source: false
@@ -552,7 +552,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    device_name: '"plughw:1,0"'
+    device_name: '"plughw:3,0"'
     num_inputs: '1'
     ok_to_block: 'False'
     samp_rate: '48000'
@@ -562,7 +562,7 @@ blocks:
     bus_structure: null
     coordinate: [1752, 460.0]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: audio_source_0
   id: audio_source
   parameters:
@@ -916,7 +916,7 @@ blocks:
     bus_structure: null
     coordinate: [1688, 388.0]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: blocks_multiply_const_vxx_2
   id: blocks_multiply_const_vxx
   parameters:
