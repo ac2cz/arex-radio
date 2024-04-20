@@ -90,7 +90,7 @@ class arex_radio_trx_pluto(gr.top_block, Qt.QWidget):
         self.Tx_Filt_High = Tx_Filt_High = 7500
         self.ToneBurst = ToneBurst = False
         self.Rx_Mute = Rx_Mute = False
-        self.Rx_Monitor = Rx_Monitor = True
+        self.Rx_Monitor = Rx_Monitor = False
         self.Rx_Mode = Rx_Mode = 4
         self.Rx_LO = Rx_LO = int(rx_freq - 9750000000 - RxOffset)
         self.Rx_Gain = Rx_Gain = 30
